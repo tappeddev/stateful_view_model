@@ -1,5 +1,9 @@
 import 'dart:async';
 
+/// This
+///
+///
+///
 class BehaviorStreamController<T> {
 
   StreamController<T> _controller;

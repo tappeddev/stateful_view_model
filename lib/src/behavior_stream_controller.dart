@@ -1,7 +1,11 @@
 import 'dart:async';
 
-/// This
+/// This [BehaviorStreamController] is like a mix between the
+/// default [StreamController] from the Stream API and the Rx BehaviourSubject.
 ///
+/// Read the Documentation from the "Rx BehaviourSubject".
+///
+/// It emits / include also the last value.
 ///
 ///
 class BehaviorStreamController<T> {

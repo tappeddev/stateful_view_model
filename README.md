@@ -1,8 +1,5 @@
 A library for Dart developers.
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
-
 ## Usage
 
 A simple usage example:
@@ -10,13 +7,14 @@ A simple usage example:
 ```dart
 import 'package:stateful_view_model/stateful_view_model.dart';
 
-main() {
-  var awesome = new Awesome();
-}
 ```
+
+## License
+
+The Apache License Version 2.0 (Check the LICENCE file in this repository)
 
 ## Features and bugs
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 
-[tracker]: http://example.com/issues/replaceme
+[tracker]: https://github.com/tikkrapp/stateful_view_model/issues

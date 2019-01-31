@@ -7,12 +7,16 @@ import 'dart:async';
 ///
 /// It emits / include also the last value.
 ///
+/// [T] is a subclass of
 ///
 class BehaviorStreamController<T> {
 
+  /// The [StreamController] that contains the stream with the states
   StreamController<T> _controller;
+  /// The last added [T].
   T _lastEvent;
 
+  /// [seedValue] is like a start value
   BehaviorStreamController({T seedValue}){
     _controller = StreamController<T>(onListen: _onListen);
 

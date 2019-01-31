@@ -4,12 +4,7 @@ import 'package:meta/meta.dart';
 import 'package:stateful_view_model/src/behavior_stream_controller.dart';
 import 'package:stateful_view_model/src/stateful_util.dart';
 
-///
-///
-///
-///
 abstract class StatefulViewModel<T extends Cloneable<T>> {
-
 
   @protected
   final int maxHistoryCount;

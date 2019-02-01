@@ -18,7 +18,7 @@ class BehaviorStreamController<T> {
 
   /// [seedValue] is like a start value
   BehaviorStreamController({T seedValue}){
-    _controller = StreamController<T>(onListen: _onListen);
+    _controller = StreamController<T>.broadcast(onListen: _onListen);
 
     if(seedValue != null){
       add(seedValue);

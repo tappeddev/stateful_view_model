@@ -25,7 +25,7 @@ class BehaviorStreamController<T> {
     }
   }
 
-  Stream<T> get stream => _controller.stream.asBroadcastStream();
+  Stream<T> get stream => _controller.stream;
 
   set onCancel(void Function() onCancelHandler) {
     _controller.onCancel = onCancelHandler;

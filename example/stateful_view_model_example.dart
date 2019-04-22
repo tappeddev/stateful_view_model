@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:stateful_view_model/stateful_view_model.dart';
 
 import 'package:meta/meta.dart';
@@ -8,9 +10,9 @@ abstract class UserService {
 
 ///
 /// The [State] represents the [View].
-/// The [State] need's to implement the [Cloneable] interface!
+/// The [State] need's to implement the [BaseState] interface!
 ///
-class LoginState implements Cloneable<LoginState> {
+class LoginState extends BaseState<LoginState> {
   String email;
   String password;
   bool loginButtonEnabled;
@@ -20,7 +22,8 @@ class LoginState implements Cloneable<LoginState> {
       {@required this.email,
       @required this.password,
       @required this.loginButtonEnabled,
-      @required this.isLoading});
+      @required this.isLoading})
+      : super([email, password, loginButtonEnabled, isLoading]);
 
   @override
   LoginState copy() => LoginState(

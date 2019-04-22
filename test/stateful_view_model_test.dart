@@ -1,4 +1,19 @@
-import 'package:stateful_view_model/stateful_view_model.dart';
 import 'package:test/test.dart';
 
-void main() {}
+import '../example/stateful_view_model_example.dart';
+
+void main() {
+  setUp(() {});
+
+  test("ds", () {
+    LoginState state1 = LoginState(
+        email: "dsds", password: "ssd", isLoading: false, loginButtonEnabled: true);
+
+    LoginState state2 = LoginState(
+        email: "dsds", password: "ssd", isLoading: false, loginButtonEnabled: true);
+
+
+    expect(state1, state2);
+
+  });
+}

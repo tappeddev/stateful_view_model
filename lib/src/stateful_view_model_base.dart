@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 import 'package:stateful_view_model/src/behavior_stream_controller.dart';
 import 'package:stateful_view_model/src/stateful_util.dart';
 
-abstract class StatefulViewModel<T extends Cloneable<T>> {
+abstract class StatefulViewModel<T extends BaseState<T>> {
 
   @protected
   final int maxHistoryCount;
@@ -38,6 +38,11 @@ abstract class StatefulViewModel<T extends Cloneable<T>> {
     T lastState = _getCopyOfLastState();
 
     T newState = reducer(lastState);
+
+    /// Don't need to set the same state two times
+    if(newState == lastState){
+      return;
+    }
 
     assert(newState != null, "Returned state can not be null!");
 

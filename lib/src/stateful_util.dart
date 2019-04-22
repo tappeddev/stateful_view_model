@@ -4,6 +4,7 @@ import 'package:equatable/equatable.dart';
 /// We need to clone every state to avoid weird behavior with pointer / references
 abstract class BaseState<T> extends Equatable {
 
+  //TODO optional !
   BaseState(List<Object> stateProperties) : super(stateProperties);
 
   T copy();

@@ -12,8 +12,6 @@ void main() {
     LoginState state2 = LoginState(
         email: "dsds", password: "ssd", isLoading: false, loginButtonEnabled: true);
 
-
     expect(state1, state2);
-
   });
 }

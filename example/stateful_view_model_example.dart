@@ -1,6 +1,7 @@
-import 'package:stateful_view_model/stateful_view_model.dart';
+import 'dart:async';
 
 import 'package:meta/meta.dart';
+import 'package:stateful_view_model/stateful_view_model.dart';
 
 abstract class UserService {
   Stream<bool> login(String email, String password);

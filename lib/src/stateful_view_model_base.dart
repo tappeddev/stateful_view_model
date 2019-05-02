@@ -1,11 +1,10 @@
 import 'dart:async';
 
 import 'package:meta/meta.dart';
-import 'package:stateful_view_model/src/behavior_stream_controller.dart';
+import 'package:rxdart/subjects.dart';
 import 'package:stateful_view_model/src/stateful_util.dart';
 
 abstract class StatefulViewModel<T extends Cloneable<T>> {
-
   @protected
   final int maxHistoryCount;
   @protected
@@ -14,22 +13,20 @@ abstract class StatefulViewModel<T extends Cloneable<T>> {
   final List<StreamSubscription> _streamDisposeBag = List();
   final List<T> _stateHistory = List<T>();
 
-  final BehaviorStreamController<T> _streamController;
+  final Subject<T> _subject = BehaviorSubject();
 
   final T _initialState;
 
   T get initialState => _initialState.copy();
 
-  Stream<T> get state => _streamController.stream;
+  Stream<T> get state => _subject.stream;
 
   StatefulViewModel(T initialState,
       {this.maxHistoryCount = 0, this.isHistoryEnabled = false})
-      : _initialState = initialState,
-        _streamController = BehaviorStreamController() {
+      : _initialState = initialState {
+    assert(initialState != null, "initialState can not be null");
 
-    assert(initialState != null, "InitialState can not be null");
-
-    _streamController.add(initialState);
+    _subject.add(initialState);
     _stateHistory.add(initialState);
   }
 
@@ -72,11 +69,10 @@ abstract class StatefulViewModel<T extends Cloneable<T>> {
 
   void _addState(T newState) {
     _handleNewState(newState);
-    _streamController.add(newState);
+    _subject.add(newState);
   }
 
-  T _getCopyOfLastState(){
-
+  T _getCopyOfLastState() {
     T copyOfLastState = _stateHistory.last.copy();
 
     return copyOfLastState;

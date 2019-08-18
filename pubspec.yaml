@@ -9,7 +9,7 @@ environment:
 
 dependencies:
   meta: ^1.1.6
-  rxdart: ^0.21.0
+  rxdart: ^0.22.1+1
 
 dev_dependencies:
   pedantic: ^1.7.0

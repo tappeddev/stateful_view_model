@@ -1,8 +1,8 @@
 name: stateful_view_model
 description: A starting point for Dart libraries or applications.
 version: 0.1.0
-homepage: https://github.com/tikkrapp/stateful_view_model
-author: Tikkr <info@tikkr.app>
+homepage: https://github.com/tappeddev/stateful_view_model
+author: Tapped <contact@tapped.dev>
 
 environment:
   sdk: '>=2.0.0 <3.0.0'

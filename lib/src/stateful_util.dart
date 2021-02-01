@@ -16,4 +16,4 @@ abstract class Cloneable<T> {
 ///     });
 ///
 /// Be careful! You need to return the new state
-typedef T Reducer<T>(T state);
+typedef Reducer<T> = T Function(T state);

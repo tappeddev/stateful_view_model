@@ -10,8 +10,8 @@ abstract class StatefulViewModel<T extends Cloneable<T>> {
   @protected
   final bool isHistoryEnabled;
 
-  final List<StreamSubscription> _streamDisposeBag = List();
-  final List<T> _stateHistory = List<T>();
+  final List<StreamSubscription> _streamDisposeBag = [];
+  final List<T> _stateHistory = <T>[];
 
   final Subject<T> _subject = BehaviorSubject();
 
@@ -23,18 +23,17 @@ abstract class StatefulViewModel<T extends Cloneable<T>> {
 
   StatefulViewModel(T initialState,
       {this.maxHistoryCount = 0, this.isHistoryEnabled = false})
-      : _initialState = initialState {
-    assert(initialState != null, "initialState can not be null");
-
+      : assert(initialState != null, "initialState can not be null"),
+        _initialState = initialState {
     _subject.add(initialState);
     _stateHistory.add(initialState);
   }
 
   @protected
   void setState(Reducer<T> reducer) {
-    T lastState = _getCopyOfLastState();
+    final lastState = _getCopyOfLastState();
 
-    T newState = reducer(lastState);
+    final newState = reducer(lastState);
 
     assert(newState != null, "Returned state can not be null!");
 
@@ -43,7 +42,7 @@ abstract class StatefulViewModel<T extends Cloneable<T>> {
 
   @protected
   T getState() {
-    T lastState = _getCopyOfLastState();
+    final lastState = _getCopyOfLastState();
 
     return lastState;
   }
@@ -73,7 +72,7 @@ abstract class StatefulViewModel<T extends Cloneable<T>> {
   }
 
   T _getCopyOfLastState() {
-    T copyOfLastState = _stateHistory.last.copy();
+    final copyOfLastState = _stateHistory.last.copy();
 
     return copyOfLastState;
   }
@@ -88,7 +87,7 @@ abstract class StatefulViewModel<T extends Cloneable<T>> {
   }
 
   void _appendToHistory(T state) {
-    var limitReached = _stateHistory.length >= maxHistoryCount;
+    final limitReached = _stateHistory.length >= maxHistoryCount;
 
     if (limitReached) {
       _stateHistory.removeAt(0);

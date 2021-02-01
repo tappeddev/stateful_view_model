@@ -1,5 +1,5 @@
 ## 0.1.0
 
-- Initial version, created by Tikkr
+- Initial version
 - Add gitIgnore
 - Add viewModel, examples, tests, readMe.md
